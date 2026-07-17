@@ -1,0 +1,26 @@
+# conda-Umgebung für scRNA-seq (Heumos Kap. 1-6)
+# Bewusst schlank & Windows-tauglich: nur conda-forge (kein bioconda,
+# das Windows kaum unterstützt). Erweiterungen später bei Bedarf ergänzen.
+#
+# Erstellen:   conda env create -f environment.yml
+# Aktivieren:  conda activate scrna
+name: scrna
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - scanpy          # Kern-Toolkit für scRNA-seq (bringt numba, umap-learn u.a. mit)
+  - anndata         # Datenstruktur hinter Scanpy (.h5ad)
+  - leidenalg       # Clustering (Heumos Kap. 5)
+  - python-igraph   # Graph-Backend für Leiden
+  - pooch           # lädt Beispieldatensätze (z. B. sc.datasets.pbmc3k)
+  - pip
+# Später bei Bedarf ergänzen:
+#   Kap. 2 (Doublets):   pip install scrublet
+#   Integration:         pip install harmonypy
